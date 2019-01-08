@@ -2,13 +2,16 @@
 
 enum
 {
-    ID_Hello = 1
+    ID_Hello = 1,
+    btnID =  wxID_HIGHEST +1
 };
 
+//这里定义事件
 wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
     EVT_MENU(ID_Hello,   MyFrame::OnHello)
     EVT_MENU(wxID_EXIT,  MyFrame::OnExit)
     EVT_MENU(wxID_ABOUT, MyFrame::OnAbout)
+    EVT_BUTTON(btnID, MyFrame::Say)
 wxEND_EVENT_TABLE()
 
 //Frame的构造函数
@@ -27,6 +30,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size) 
     SetMenuBar( menuBar );
     CreateStatusBar();
     SetStatusText("I am dj!" );
+    myBtn = new wxButton(this, btnID, _T("click"), wxPoint(20, 30), wxSize(20, 10), 0);
 }
 
 void MyFrame::OnExit(wxCommandEvent& event)
@@ -43,4 +47,10 @@ void MyFrame::OnAbout(wxCommandEvent& event)
 void MyFrame::OnHello(wxCommandEvent& event)
 {
     wxLogMessage("Hello world from wxWidgets!");
+}
+
+void MyFrame::Say(wxCommandEvent& event)
+{
+     wxMessageBox( "djdj",
+    "About Hello World", wxOK | wxICON_INFORMATION );  
 }

@@ -11,10 +11,12 @@ class MyFrame: public wxFrame
 {
 public:
     MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
+    wxButton *myBtn;
 private:
     void OnHello(wxCommandEvent& event);
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
+    void Say(wxCommandEvent& event);
     wxDECLARE_EVENT_TABLE();
 };
 
